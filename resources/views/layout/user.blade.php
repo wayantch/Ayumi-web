@@ -125,8 +125,8 @@
             </li>
             <li>
                 <a href="#" class="flex flex-col items-center" onclick="confirmLogout(event)">
-                    <i class='bx bxs-user text-3xl'></i>
-                    <p class="text-sm">Profil</p>
+                    <i class='bx bxs-log-out text-3xl'></i>
+                    <p class="text-sm">Keluar</p>
                 </a>
             </li>
         </ul>

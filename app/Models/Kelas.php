@@ -14,6 +14,11 @@ class Kelas extends Model
         return $this->belongsTo(Category::class);
     }
 
+    // public function daftar(): BelongsTo
+    // {
+    //     return $this->belongsTo(Daftar::class);
+    // }
+
     protected $table = 'kelas';
 
     protected $fillable = [

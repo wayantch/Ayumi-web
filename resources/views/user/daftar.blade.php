@@ -23,7 +23,7 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                         <label for="full_name" class="block text-sm font-medium text-gray-700">Nama Lengkap</label>
-                        <input type="text" id="full_name" value="{{ $user->name }}" name="full_name" autocomplete="name" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                        <input type="text" id="full_name" value="{{ ucwords($user->name) }}" name="full_name" autocomplete="name" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
                         @error('full_name')
                             <span class="text-red-500 text-sm">{{ $message }}</span>
                         @enderror
@@ -108,17 +108,13 @@
                     </div>
 
                     <div>
-                        <label for="class" class="block text-sm font-medium text-gray-700">Kelas yang Dipilih</label>
-                        <select id="class" name="class" autocomplete="class" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
-                            <option value="Hataraku Nihongo">Hataraku Nihongo</option>
-                            <option value="Kelas Privat">Kelas Privat</option>
-                            <option value="JFT-Basic Courser">JFT-Basic Courser</option>
-                            <option value="Kelas Online">Kelas Online</option>
-                        </select>
-                        @error('class')
+                        <label for="category" class="block text-sm font-medium text-gray-700">Kelas Yang Dipilih</label>
+                        <input type="text" id="category" value="{{ ucwords($kelas->category->name) }}" name="class" autocomplete="category" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                        @error('email')
                             <span class="text-red-500 text-sm">{{ $message }}</span>
                         @enderror
                     </div>
+                
 
                     <div>
                         <label for="day_time" class="block text-sm font-medium text-gray-700">Hari dan Jam yang Dipilih</label>
@@ -138,6 +134,11 @@
                         @error('file')
                             <span class="text-red-500 text-sm">{{ $message }}</span>
                         @enderror
+                    </div>
+
+                    <div class="text-right">
+                        <label for="file" class="block text-sm font-medium text-gray-700">Total Pembayaran</label>
+                        <h2 class="text-2xl font-semibold">Rp {{ $kelas->price }}</h2>
                     </div>
                 </div>
                 <div class="mt-6 flex items-center">

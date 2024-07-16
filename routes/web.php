@@ -12,6 +12,12 @@ use App\Http\Controllers\TokoController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
+// Route::domain('daftarayumi.mongel.net')->group(function () {
+//     Route::get('/', function () {
+//         return view('/login');
+//     });
+// });
+
 // Rute untuk login
 Route::get('/login', [SesiController::class, 'index'])->name('login');
 Route::post('/login', [SesiController::class, 'login'])->name('login');
@@ -56,9 +62,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/admin/logout', [SesiController::class, 'logout'])->name('logout');
 
     // Rute untuk pendaftaran kelas
+    // Route::get('/user/daftar', [DaftarController::class, 'create'])->name('daftar.create');
     Route::get('/user/daftar/{id}', [DaftarController::class, 'create'])->name('daftar.create');
-    Route::get('/user/daftar', [DaftarController::class, 'create'])->name('daftar.create');
-    // Route::get('/user/daftar/{user_id}/{kelas_id}', [DaftarController::class, 'create'])->name('daftar.create');
     Route::post('/user/daftar', [DaftarController::class, 'store'])->name('daftar.store');
 
     // Rute untuk pesan terjemahan lisan

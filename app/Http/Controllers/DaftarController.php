@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Daftar;
+use App\Models\Kelas;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -23,14 +25,27 @@ class DaftarController extends Controller
         return view('user.detail', compact('daftar'));
     }
 
+    public function daftarUser($category)
+    {
+        $user = auth()->user();
+        // Misalnya, jika Anda perlu mengambil harga dari database atau lainnya, Anda bisa lakukan query di sini
+        $price = Kelas::whereHas('category', function ($query) use ($category) {
+            $query->where('name', $category);
+        })->value('price'); // Contoh query, sesuaikan dengan struktur database Anda
+
+        return view('user.daftar', compact('user', 'category', 'price'));
+    }
+
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create($id)
     {
         $user = auth()->user();
-        return view('user.daftar', compact('user'));
+        $kelas = Kelas::where('id', $id)->with('category')->first();
+        $categories = Category::all();
+        return view('user.daftar', compact('user', 'categories', 'kelas'));
     }
 
     /**
@@ -65,6 +80,7 @@ class DaftarController extends Controller
 
         return redirect()->route('home')->with('success', 'Data berhasil ditambahkan!');
     }
+
 
     /**
      * Display the specified resource.

@@ -6,11 +6,11 @@
 
     <div class="py-6 grid grid-cols-1 md:grid-cols-2 gap-6">
         @foreach ($kelas as $k)
-            <a href="{{ route('daftar.create', ['user_id' => $user->id, 'kelas_id' => $k->id]) }}"
+            <a href="{{ url('/user/daftar/' . $k->id) }}"
                 class="block transform transition duration-300 ease-in-out">
                 <div class="rounded-lg overflow-hidden">
                     <div class="bg-gray-50 hover:bg-gray-200 p-6">
-                        <div class="bg-white px-6 py-10 rounded-lg relative">
+                        <div class="bg-white px-6 py-10 rounded-lg relative">   
                             <h1 class="text-2xl font-bold text-center mt-2 text-red-700">{{ ucwords($k->category->name) }}
                             </h1>
                             <p class="text-sm text-center mb-2">{{ $k->sub_title }}</p>
@@ -31,6 +31,7 @@
                 </div>
             </a>
         @endforeach
+
 
         <!-- Link untuk layanan lain -->
 

@@ -9,12 +9,10 @@ class UserController extends Controller
 {
     public function index()
     {
-        $kelas = Kelas::all();
-        $user = auth()->user(); // Mengambil informasi pengguna yang sedang login
+        $kelas = Kelas::orderBy('id', 'desc')->get();
+        $user = auth()->user(); 
         return view('user.home', compact('kelas', 'user'));
     }
-    
-    
 
     public function logout()
     {
